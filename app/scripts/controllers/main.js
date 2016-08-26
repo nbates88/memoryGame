@@ -22,31 +22,65 @@ angular.module('memoryGameApp')
   	var allCards = cards.concat(cards)
   	var numClicks = 0;
   	var cardChosen1 = "";
+  	var cardChosen1Index;
+  	var cardChosen2Index;
   	var cardChosen2 = "";
   	
-
   	$scope.cards = allCards;
+  	$scope.isFlipped =[];
+  	$scope.isDisabled=[];
   	
-  	$scope.cardOnClick = function(cardPath){
+  	$scope.cardOnClick = function(cardPath, index){
   		numClicks++;
-  		flip();
+  
   		if(numClicks === 1){
+  			flip(index);
   			cardChosen1 = cardPath;
+  			cardChosen1Index = index;
+
   		} else if(numClicks === 2){
+  			flip(index);
   			cardChosen2 = cardPath;
-  			checkForMatch(cardChosen1, cardChosen2);
-  			numClicks = 0;
+  			cardChosen2Index = index;
+  			setTimeout(function(){
+  				checkForMatch(cardChosen1, cardChosen2, cardChosen1Index, cardChosen2Index);
+  			}, 1000)
   		}
   	}
 
   	$scope.newGameOnClick = function(){
+  		if($scope.isFlipped.length > 0){
+  			for(var i = 0; i < $scope.isFlipped.length; i++){
+  				console.log($scope.isFlipped[i])
+  				$scope.isFlipped[i] = '';
+  			}
+  		}
   		shuffle(allCards);
   	}
 
+  	function flip(id){
+  		$scope.isFlipped[id] = $scope.isFlipped[id]=='flipped'?'':'flipped';
+  		console.log($scope.isFlipped)
+  	}
 
+  	function disable(id) {
+  		$scope.isDisabled[id] = $scope.isDisabled[id]=='disable'?'':'disable';
+  		console.log($scope.isDisabled)
+  	}
+
+  	function checkForMatch(cardChosen1, cardChosen2, index1, index2) {
+   		numClicks = 0;
+	    if (cardChosen1 === cardChosen2) {
+	        disable(index1);
+	        disable(index2);
+	    } else {
+	    	console.log(index1, index2)
+	    	flip(index1);
+	    	flip(index2);
+	        // document.images[firstchoice].src = backcard;
+	        // document.images[secondchoice].src = backcard;
+	        // return;
+		}
+}
 
   });
-
-
-// "../../images/2.png", "../../images/3.png", "../../images/4.png", "../../images/5.png", 
-//   	"../../images/6.png", "../../images/7.png", "../../images/8.png", "../../images/9.png", "../../images/10.png"

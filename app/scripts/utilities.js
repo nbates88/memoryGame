@@ -1,17 +1,16 @@
 'use strict';
 
-function checkForMatch(cardChosen1, cardChosen2) {
-    // clearInterval(timer); //stop timer
-    if (cardChosen1 === cardChosen2) {
-        alert("correct choice")
-        // document.getElementById("matches").innerHTML = match;
-    } else {
-    	alert("incorrect choice")
-        // document.images[firstchoice].src = backcard;
-        // document.images[secondchoice].src = backcard;
-        // return;
-	}
-}
+// function checkForMatch(cardChosen1, cardChosen2) {
+//     // clearInterval(timer); //stop timer
+//     if (cardChosen1 === cardChosen2) {
+        
+//     } else {
+    	
+//         // document.images[firstchoice].src = backcard;
+//         // document.images[secondchoice].src = backcard;
+//         // return;
+// 	}
+// }
 
 function shuffle (array) {
   var i = 0
@@ -24,8 +23,4 @@ function shuffle (array) {
     array[i] = array[j]
     array[j] = temp
   }
-}
-
-function flip() {
-    $('.card').toggleClass('flipped');
 }

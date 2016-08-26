@@ -53,11 +53,15 @@ body {
     -webkit-transform-origin: 50% 50%;
 }
 
-.card.flipped {
+.flipped {
     -webkit-transform: rotateY( 180deg );
     -moz-transform: rotateY( 180deg );
     -o-transform: rotateY( 180deg );
     transform: rotateY( 180deg );
+}
+
+.disable{
+  pointer-events: none
 }
 
 .card div {
@@ -72,10 +76,11 @@ body {
 }
 
 .card .front {
-  background: red;
+  background: blue;
   height: 200px;
   width: 150px;
   z-index: 2;
+  border-radius: 5px;
 }
 
 .card .back {

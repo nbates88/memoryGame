@@ -7,13 +7,11 @@
 </div> -->
 <div>
   <div class="flex-container">
-    <div class="cards" ng-repeat="card in cards track by $index" ng-Click="cardOnClick(card);">
-      <div class="card">
-          <div class="front">?</div>
+    <div class="cards" ng-repeat="card in cards track by $index" ng-click="cardOnClick(card, $index)">
+      <div class="card" ng-class='[isFlipped[$index], isDisabled[$index]]'>
+          <div class="front"></div>
           <div class="back"><img src="{{card}}" height="200" width="150"></div>
       </div>
-   
-      
     </div>
   </div>
   <button ng-Click="newGameOnClick()">Start A New Game</button>
