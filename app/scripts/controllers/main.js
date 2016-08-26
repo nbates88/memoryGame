@@ -24,11 +24,12 @@ angular.module('memoryGameApp')
   	var cardChosen1 = "";
   	var cardChosen2 = "";
   	
-  	
+
   	$scope.cards = allCards;
   	
   	$scope.cardOnClick = function(cardPath){
   		numClicks++;
+  		flip();
   		if(numClicks === 1){
   			cardChosen1 = cardPath;
   		} else if(numClicks === 2){

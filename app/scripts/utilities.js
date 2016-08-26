@@ -27,5 +27,5 @@ function shuffle (array) {
 }
 
 function flip() {
-    $('.cards').toggleClass('flipped');
+    $('.card').toggleClass('flipped');
 }
