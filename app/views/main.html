@@ -1,0 +1,17 @@
+<!-- <div class="jumbotron">
+  <h1>'Allo, 'Allo!</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+</div> -->
+<div>
+  <div class="flex-container">
+    <div class="cards" ng-repeat="card in cards track by $index" ng-Click="cardOnClick(card)">
+      <div class="front"><img src="{{card}}" height="200" width="150"></div>
+      <div class="back"></div>
+    </div>
+  </div>
+  <button ng-Click="newGameOnClick()">Start A New Game</button>
+</div>
+
