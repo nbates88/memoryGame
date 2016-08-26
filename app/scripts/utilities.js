@@ -15,8 +15,8 @@ function checkForMatch(cardChosen1, cardChosen2) {
 
 function shuffle (array) {
   var i = 0
-    , j = 0
-    , temp = null
+  var j = 0
+  var temp = null
 
   for (i = array.length - 1; i > 0; i -= 1) {
     j = Math.floor(Math.random() * (i + 1))
@@ -27,5 +27,5 @@ function shuffle (array) {
 }
 
 function flip() {
-    $('.card').toggleClass('flipped');
+    $('.cards').toggleClass('flipped');
 }
