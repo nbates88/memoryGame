@@ -10,6 +10,7 @@ body {
 }
 
 .flex-container{
+    background-image: url("../images/wood.jpg");
     padding: 25px;
     display: -webkit-box;
     display: -moz-box;
@@ -18,7 +19,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
-    border: 2px solid #D3D3D3;
+    /*border: 2px solid;*/
     border-radius: 10px;
     width: 100%;
     min-width: 200px;
@@ -36,6 +37,7 @@ body {
   height: 200px;
   width: 150px;
   position: relative;
+
 }
 
 .card {
@@ -73,10 +75,10 @@ body {
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
+
 }
 
 .card .front {
-  background: blue;
   height: 200px;
   width: 150px;
   z-index: 2;
@@ -101,7 +103,6 @@ body {
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -155,7 +156,7 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {

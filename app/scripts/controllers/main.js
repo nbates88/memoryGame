@@ -39,12 +39,22 @@ angular.module('memoryGameApp')
   			cardChosen1Index = index;
 
   		} else if(numClicks === 2){
+  			numClicks = 0;
   			flip(index);
   			cardChosen2 = cardPath;
   			cardChosen2Index = index;
-  			setTimeout(function(){
-  				checkForMatch(cardChosen1, cardChosen2, cardChosen1Index, cardChosen2Index);
-  			}, 1000)
+  			
+  			if (cardChosen1 === cardChosen2) {
+		        disable(cardChosen1Index);
+		        disable(cardChosen2Index);
+	    	} else{
+	    		setTimeout(function(){
+	    			flip(cardChosen1Index);
+	    			flip(cardChosen2Index);
+  				// checkForMatch(cardChosen1, cardChosen2, cardChosen1Index, cardChosen2Index);
+  				}, 500)
+	    	}
+  			
   		}
   	}
 
@@ -55,7 +65,9 @@ angular.module('memoryGameApp')
   				$scope.isFlipped[i] = '';
   			}
   		}
-  		shuffle(allCards);
+  		setTimeout(function(){
+  			shuffle(allCards)
+  		}, 100);
   	}
 
   	function flip(id){
@@ -69,17 +81,14 @@ angular.module('memoryGameApp')
   	}
 
   	function checkForMatch(cardChosen1, cardChosen2, index1, index2) {
-   		numClicks = 0;
+  		 numClicks = 0;
 	    if (cardChosen1 === cardChosen2) {
 	        disable(index1);
 	        disable(index2);
+
 	    } else {
-	    	console.log(index1, index2)
 	    	flip(index1);
 	    	flip(index2);
-	        // document.images[firstchoice].src = backcard;
-	        // document.images[secondchoice].src = backcard;
-	        // return;
 		}
 }
 
