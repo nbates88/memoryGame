@@ -9,6 +9,13 @@ body {
   padding: 0;
 }
 
+.main-header{
+  width: 30%;
+  margin: 0 auto;
+  padding: 2%;
+  text-align: center;
+}
+
 .flex-container{
     background-image: url("../images/wood.jpg");
     padding: 25px;

@@ -1,18 +1,7 @@
 'use strict';
 
-// function checkForMatch(cardChosen1, cardChosen2) {
-//     // clearInterval(timer); //stop timer
-//     if (cardChosen1 === cardChosen2) {
-        
-//     } else {
-    	
-//         // document.images[firstchoice].src = backcard;
-//         // document.images[secondchoice].src = backcard;
-//         // return;
-// 	}
-// }
-
 function shuffle (array) {
+	console.log("shuffle", array)
   var i = 0
   var j = 0
   var temp = null

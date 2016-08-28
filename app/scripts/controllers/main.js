@@ -9,26 +9,51 @@
  */
 angular.module('memoryGameApp')
   .controller('MainCtrl', function ($scope) {
-  	var cardTwo="../../images/2.png";
-  	var cardThree="../../images/3.png";
-  	var cardFour="../../images/4.png";
-  	var cardFive="../../images/5.png";
-  	var cardSix="../../images/6.png";
-  	var cardSeven="../../images/7.png";
-  	var cardEight="../../images/8.png";
-  	var cardNine="../../images/9.png";
-  	var cardTen="../../images/10.png";
-  	var cards = [cardTwo, cardThree, cardFour, cardFive, cardSix, cardSeven, cardEight, cardNine, cardTen];
-  	var allCards = cards.concat(cards)
-  	var numClicks = 0;
+  	var Card = function(path){
+  		this.path = path;
+  		this.class = "";
+  	}
+
+  	Card.prototype.setClass = function(targetClass){
+  		this.class = targetClass;
+  	}
+
+  	Card.prototype.getClass = function(){
+  		return this.class;
+  	}
+
+  	Card.prototype.flip = function(){
+  		if(this.class === "flipped"){
+  			this.setClass("");
+  		}else{
+  			this.setClass("flipped");
+  		}
+  	}
+
+  	Card.prototype.disable = function(){
+  		this.setClass("flipped disable");
+  	}
+
+  	Card.prototype.getImagePath = function(){
+  		return this.path;
+  	}
+
+  	var cardsArray =[];
+	var cardPath = "../../images/"
+	var numClicks = 0;
   	var cardChosen1 = "";
-  	var cardChosen1Index;
-  	var cardChosen2Index;
-  	var cardChosen2 = "";
+	var cardChosen2 = "";
+	var cardChosen1Index;
+	var cardChosen2Index;
+
   	
-  	$scope.cards = allCards;
-  	$scope.isFlipped =[];
-  	$scope.isDisabled=[];
+  	for(var i = 2; i <= 10; i++){
+  		cardsArray.push(new Card(cardPath + i +".png"));
+  		cardsArray.push(new Card(cardPath + i +".png"));
+  	}
+  	
+	shuffle(cardsArray);
+  	$scope.cards = cardsArray;
   	
   	$scope.cardOnClick = function(cardPath, index){
   		numClicks++;
@@ -47,49 +72,37 @@ angular.module('memoryGameApp')
   			if (cardChosen1 === cardChosen2) {
 		        disable(cardChosen1Index);
 		        disable(cardChosen2Index);
-	    	} else{
+	    	} else {
 	    		setTimeout(function(){
 	    			flip(cardChosen1Index);
 	    			flip(cardChosen2Index);
-  				// checkForMatch(cardChosen1, cardChosen2, cardChosen1Index, cardChosen2Index);
-  				}, 500)
-	    	}
-  			
+	    			$scope.$apply();
+  				}, 1000)
+	    	}	
   		}
   	}
 
   	$scope.newGameOnClick = function(){
-  		if($scope.isFlipped.length > 0){
-  			for(var i = 0; i < $scope.isFlipped.length; i++){
-  				console.log($scope.isFlipped[i])
-  				$scope.isFlipped[i] = '';
-  			}
-  		}
+  		numClicks = 0;
+  		cardChosen1;
+		cardChosen2;
+		cardChosen1Index;
+		cardChosen2Index;
+		for(var i = 0; i < $scope.cards.length; i++){
+			$scope.cards[i].class = '';
+		}
   		setTimeout(function(){
-  			shuffle(allCards)
+  			shuffle($scope.cards)
+  			$scope.cards = $scope.cards;
   		}, 100);
   	}
 
   	function flip(id){
-  		$scope.isFlipped[id] = $scope.isFlipped[id]=='flipped'?'':'flipped';
-  		console.log($scope.isFlipped)
+  		$scope.cards[id].flip();
   	}
 
   	function disable(id) {
-  		$scope.isDisabled[id] = $scope.isDisabled[id]=='disable'?'':'disable';
-  		console.log($scope.isDisabled)
+  			$scope.cards[id].disable();
   	}
-
-  	function checkForMatch(cardChosen1, cardChosen2, index1, index2) {
-  		 numClicks = 0;
-	    if (cardChosen1 === cardChosen2) {
-	        disable(index1);
-	        disable(index2);
-
-	    } else {
-	    	flip(index1);
-	    	flip(index2);
-		}
-}
 
   });
