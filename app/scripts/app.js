@@ -21,7 +21,7 @@ angular
   .config(function ($stateProvider) {
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'

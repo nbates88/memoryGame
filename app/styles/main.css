@@ -67,7 +67,8 @@ body {
 }
 
 .disable{
-  pointer-events: none
+  pointer-events: none;
+  opacity: .5;
 }
 
 .card div {
@@ -94,5 +95,16 @@ body {
   -moz-transform: rotateY( 180deg );
   -o-transform: rotateY( 180deg );
   transform: rotateY( 180deg );
+}
+
+.jumbotron {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
 }
 

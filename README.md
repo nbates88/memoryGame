@@ -1,7 +1,5 @@
 # memory-game
-
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+This application is a simple implementation of the classic memory game.
 
 ## Build & development
 

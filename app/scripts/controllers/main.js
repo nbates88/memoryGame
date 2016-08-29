@@ -18,10 +18,6 @@ angular.module('memoryGameApp')
   		this.class = targetClass;
   	}
 
-  	Card.prototype.getClass = function(){
-  		return this.class;
-  	}
-
   	Card.prototype.flip = function(){
   		if(this.class === "flipped"){
   			this.setClass("");
@@ -32,10 +28,6 @@ angular.module('memoryGameApp')
 
   	Card.prototype.disable = function(){
   		this.setClass("flipped disable");
-  	}
-
-  	Card.prototype.getImagePath = function(){
-  		return this.path;
   	}
 
   	var cardsArray =[];
@@ -69,33 +61,24 @@ angular.module('memoryGameApp')
   			cardChosen2 = cardPath;
   			cardChosen2Index = index;
   			
-  			if (cardChosen1 === cardChosen2) {
+  			if (cardChosen1 === cardChosen2 && cardChosen1Index !== cardChosen2Index) {
 		        disable(cardChosen1Index);
 		        disable(cardChosen2Index);
 	    	} else {
-	    		setTimeout(function(){
-	    			flip(cardChosen1Index);
-	    			flip(cardChosen2Index);
-	    			$scope.$apply();
-  				}, 1000)
+	    		flipCardsBack(cardChosen1Index, cardChosen2Index);
 	    	}	
   		}
   	}
 
   	$scope.newGameOnClick = function(){
   		numClicks = 0;
-  		cardChosen1;
-		  cardChosen2;
-		  cardChosen1Index;
-		  cardChosen2Index;
+
 		  for(var i = 0; i < $scope.cards.length; i++){
-			 $scope.cards[i].class = '';
+        $scope.cards[i].class = '';
 		  }
   		setTimeout(function(){
   			shuffle($scope.cards)
-  			$scope.cards = $scope.cards;
   		}, 100);
-      alert("Choose two cards!")
   	}
 
   	function flip(id){
@@ -105,5 +88,13 @@ angular.module('memoryGameApp')
   	function disable(id) {
   			$scope.cards[id].disable();
   	}
+
+    function flipCardsBack(index1, index2){
+      setTimeout(function(){
+            flip(index1);
+            flip(index2);
+            $scope.$apply();
+          }, 1000)
+    }
 
   });
