@@ -39,12 +39,12 @@ angular.module('memoryGameApp')
   	}
 
   	var cardsArray =[];
-	var cardPath = "../../images/"
-	var numClicks = 0;
+    var cardPath = "../../images/"
+    var numClicks = 0;
   	var cardChosen1 = "";
-	var cardChosen2 = "";
-	var cardChosen1Index;
-	var cardChosen2Index;
+    var cardChosen2 = "";
+    var cardChosen1Index;
+    var cardChosen2Index;
 
   	
   	for(var i = 2; i <= 10; i++){
@@ -52,7 +52,7 @@ angular.module('memoryGameApp')
   		cardsArray.push(new Card(cardPath + i +".png"));
   	}
   	
-	shuffle(cardsArray);
+    shuffle(cardsArray);
   	$scope.cards = cardsArray;
   	
   	$scope.cardOnClick = function(cardPath, index){
@@ -85,16 +85,17 @@ angular.module('memoryGameApp')
   	$scope.newGameOnClick = function(){
   		numClicks = 0;
   		cardChosen1;
-		cardChosen2;
-		cardChosen1Index;
-		cardChosen2Index;
-		for(var i = 0; i < $scope.cards.length; i++){
-			$scope.cards[i].class = '';
-		}
+		  cardChosen2;
+		  cardChosen1Index;
+		  cardChosen2Index;
+		  for(var i = 0; i < $scope.cards.length; i++){
+			 $scope.cards[i].class = '';
+		  }
   		setTimeout(function(){
   			shuffle($scope.cards)
   			$scope.cards = $scope.cards;
   		}, 100);
+      alert("Choose two cards!")
   	}
 
   	function flip(id){
