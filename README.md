@@ -1,4 +1,5 @@
 # memory-game
+This application is a simple implementation of the classic memory game.
 
 ## Build & development
 
