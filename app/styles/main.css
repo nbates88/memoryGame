@@ -30,9 +30,11 @@ body {
     max-width: 85%;
     flex-direction: row;
     margin: 0 auto;
+    justify-content: space-between;
 
 }
 .cards{
+
   margin: 11px;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;

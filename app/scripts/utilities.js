@@ -1,7 +1,6 @@
 'use strict';
 
 function shuffle (array) {
-	console.log("shuffle", array)
   var i = 0
   var j = 0
   var temp = null
